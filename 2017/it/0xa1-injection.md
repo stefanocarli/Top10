@@ -1,14 +1,14 @@
 # A1:2017 Injection
 
-| Threat agents/Attack vectors | Security Weakness           | Impacts               |
+| Threat agents/Attack vectors | Problematica di sicurezza       | Impatti              |
 | -- | -- | -- |
-| Access Lvl : Exploitability 3 | Prevalence 2 : Detectability 3 | Technical 3 : Business |
-| Almost any source of data can be an injection vector, environment variables, parameters, external and internal web services, and all types of users. [Injection flaws](https://www.owasp.org/index.php/Injection_Flaws) occur when an attacker can send hostile data to an interpreter. | Injection flaws are very prevalent, particularly in legacy code. Injection vulnerabilities are often found in SQL, LDAP, XPath, or NoSQL queries, OS commands, XML parsers, SMTP headers, expression languages, and ORM queries. Injection flaws are easy to discover when examining code. Scanners and fuzzers can help attackers find injection flaws. |Injection can result in data loss, corruption, or disclosure to unauthorized parties, loss of accountability, or denial of access. Injection can sometimes lead to complete host takeover. The business impact depends on the needs of the application and data.|
+| Access Lvl : Sfruttabilità 3 | Diffusione 2 : Individuazione 3 | Tecnici 3 : Business |
+| Quasi tutte le sorgenti di dati possono essere un vettore di injection: variabili d'ambiente, parametri, servizi web interni ed esterni e tutte le tipologie di utenti. [Una injection](https://www.owasp.org/index.php/Injection_Flaws) si verifica quando un attaccante invia dei dati non fidati ad un interprete. | Queste problematiche sono molto diffuse, in particolare su codice legacy. Le vulnerabilità di injection si trovano spesso in SQL, LDAP, XPath, o query NoSQL, nei comandi OS, nei parser XML, negli header SMTP, negli expression language, e nelle query ORM. Le injection sono semplici da identificare quando si esamina il codice sorgente. Gli scanner e i fuzzer possono essere d'aiuto per trovarle. |Le injection possono comportare perdita o corruzione di dati, disclosure verso parti non autorizzate, perdita della tracciabilità o negazione d'accesso. In alcuni casi può portare anche al controllo completo dell'host. L'impatto sul business dipende dal valore dell'applicazione e dei dati.|
 
 
-## Is the Application Vulnerable?
+## Sono vulnerabile?
 
-An application is vulnerable to attack when:
+Un'applicazione è vulnerabile se:
 
 * User-supplied data is not validated, filtered, or sanitized by the application.
 * Dynamic queries or non-parameterized calls without context-aware escaping are used directly in the interpreter.  

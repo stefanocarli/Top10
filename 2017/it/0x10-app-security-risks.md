@@ -1,37 +1,36 @@
 # Risk - Application Security Risks
 
-## What Are Application Security Risks?
+## Quali sono i rischi per la sicurezza delle applicazioni?
 
-Attackers can potentially use many different paths through your application to do harm to your business or organization. Each of these paths represents a risk that may, or may not, be serious enough to warrant attention.
-
+Gli attaccanti potenzialmente possono utilizzare diversi percorsi attraverso la vostra applicazione per nuocere alla vostra attività o organizzazione. Ognuno di questi rappresenta un rischio che può, o non può, essere abbastanza grave da attirare l’attenzione.
 ![App Security Risks](images/0x10-risk-1.png)
 
-Sometimes these paths are trivial to find and exploit, and sometimes they are extremely difficult. Similarly, the harm that is caused may be of no consequence, or it may put you out of business. To determine the risk to your organization, you can evaluate the likelihood associated with each threat agent, attack vector, and security weakness and combine it with an estimate of the technical and business impact to your organization. Together, these factors determine your overall risk.
+Alcune volte, questi percorsi sono facili da trovare e sfruttare, altre volte sono estremamente difficili. Allo stesso modo il danno causato può non avere conseguenze o farvi fallire. Al fine di determinare il rischio per la vostra organizzazione, potete valutare le probabilità associate ad ogni minaccia, vettore di attacco e debolezza di sicurezza e combinarlo con una stima degli impatti tecnici e finanziari per la vostra azienda.
 
-## What's My Risk
+## Quali sono i miei rischi?
 
-The [OWASP Top 10](https://www.owasp.org/index.php/Top10) focuses on identifying the most serious web application security risks for a broad array of organizations. For each of these risks, we provide generic information about likelihood and technical impact using the following simple ratings scheme, which is based on the OWASP Risk Rating Methodology.  
+La [OWASP Top 10](https://www.owasp.org/index.php/Top10) si focalizza nell'identificare i rischi più gravi per una vasta gamma di organizzazioni. Per ognuno di questi rischi, noi forniamo informazioni generiche su probabilità e impatto tecnico usando i seguenti schemi di valutazione, che sono alla base della OWASP Risk Rating Methodology.
 
-| Threat Agents | Exploitability | Weakness Prevalence | Weakness Detectability | Technical Impacts | Business Impacts |
+| Agenti di minaccia | Sfruttabilità | Diffusione | Individuazione | Impatti Tecnici | Impatti sul Business |
 | -- | -- | -- | -- | -- | -- |
-| Appli-   | Easy 3 | Widespread 3 | Easy 3 | Severe 3 | Business     |
-| cation   | Average 2 | Common 2 | Average 2 | Moderate 2 | Specific |
-| Specific | Difficult 1 | Uncommon 1 | Difficult 1 | Minor 1 |       |
+| Specifico   | Facile 3    | Diffuso 3    | Facile 3    | Grave 3    | Specifico |
+| per         | Medio 2     | Comune 2     | Medio 2     | Moderato 2 | per il    |
+| App         | Difficile 1 | Non Comune 1 | Difficile 1 | Minore 1   | Business  |
 
-In this edition, we have updated the risk rating system to assist in calculating the likelihood and impact of any given risk. For more details, please see [Note About Risks](0xc0-note-about-risks.md). 
+In questa edizione, abbiamo aggiornato il sistema di valutazione del rischio, in modo da assisterti nel calcolo della probabilità e dell'impatto di ciascun rischio. Per più dettagli, vedi [Appunti sui rischi](0xc0-note-about-risks.md). 
 
-Each organization is unique, and so are the threat actors for that organization, their goals, and the impact of any breach. If a public interest organization uses a content management system (CMS) for public information and a health system uses that same exact CMS for sensitive health records, the threat actors and business impacts can be very different for the same software. It is critical to understand the risk to your organization based on applicable threat agents and business impacts.
+Ciascuna organizzazione è un caso a parte, così come le minacce per quella organizzazione, i loro obiettivi e l'impatto di una intrusione. Se un'organizzazione di interesse pubblico utilizza un sistema di gestione dei contenuti (CMS) per informazioni pubbliche e un sistema sanitario utilizza lo stesso CMS per dati sanitari sensibili, la minaccia e l'impatto sul business possono essere diversi per lo stesso software. È di importanza critica comprendere il rischio della tua organizzazione in base alle minacce e all'impatto sul business.
 
-Where possible, the names of the risks in the Top 10 are aligned with [Common Weakness Enumeration](https://cwe.mitre.org/) (CWE) weaknesses to promote generally accepted naming conventions and to reduce confusion.
+Dove possibile, i nomi dei rischi nella Top 10 sono allineati con le debolezze della [Common Weakness Enumeration](https://cwe.mitre.org/) (CWE) per promuovere delle convenzioni sui nomi generalmente riconosciute e ridurne così la confusione.
 
-## References
+## Riferimenti
 
 ### OWASP
 
 * [OWASP Risk Rating Methodology](https://www.owasp.org/index.php/OWASP_Risk_Rating_Methodology)
 * [Article on Threat/Risk Modeling](https://www.owasp.org/index.php/Threat_Risk_Modeling)
 
-### External
+### Esterni
 
 * [ISO 31000: Risk Management Std](https://www.iso.org/iso-31000-risk-management.html)
 * [ISO 27001: ISMS](https://www.iso.org/isoiec-27001-information-security.html)
