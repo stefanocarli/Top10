@@ -14,7 +14,7 @@ Durante gli ultimi anni, l'architettura e le tecnologie delle applicazioni sono 
 
 * **A4:2017-XML External Entities (XXE)** è una nuova categoria supportata principalmente da dati provenienti da strumenti che svolgono test di sicurezza sui codici sorgenti ([SAST](https://www.owasp.org/index.php/Source_Code_Analysis_Tools)).
 
-##Nuove problematiche, supportate dalla community
+## Nuove problematiche, supportate dalla community
 
 Abbiamo chiesto alla community di fornirci intuizioni a lungo termine su due nuove categorie di debolezze. Dopo più di 500 peer submissions, e eliminando problematiche già supportate dai dati (come Sensitive Data Exposure e XXE), le due nuove problematiche sono:
 
