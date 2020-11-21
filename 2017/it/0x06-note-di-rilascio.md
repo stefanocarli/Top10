@@ -2,7 +2,7 @@
 
 ## Cosa è cambiato dalla Top 10 2013 alla 2017?
 
-Negli ultimi quattro anni ci sono stati innumerevoli cambiamenti, e la Top 10 OWASP aveva bisogno di cambiare. Abbiamo completamente riorganizzato la Top 10 OWASP, aggioranto la metodologia, utilizzato un nuovo processo per ottenere i dati, lavorato con la community, riorganizzato i nostri rischi, riscritto ciascun rischio da zero, e aggiunto riferimenti ai linguaggi e ai framework più utilizzati.
+Negli ultimi quattro anni ci sono stati innumerevoli cambiamenti, e la Top 10 OWASP aveva bisogno di cambiare. Abbiamo completamente riorganizzato la Top 10 OWASP, aggiornato la metodologia, utilizzato un nuovo processo per ottenere i dati, lavorato con la community, riorganizzato i nostri rischi, riscritto ciascun rischio da zero, e aggiunto riferimenti ai linguaggi e ai framework più utilizzati.
 
 Durante gli ultimi anni, l'architettura e le tecnologie delle applicazioni sono cambiate in modo significativo:
 
@@ -14,7 +14,7 @@ Durante gli ultimi anni, l'architettura e le tecnologie delle applicazioni sono 
 
 * **A4:2017-XML External Entities (XXE)** è una nuova categoria supportata principalmente da dati provenienti da strumenti che svolgono test di sicurezza sui codici sorgenti ([SAST](https://www.owasp.org/index.php/Source_Code_Analysis_Tools)).
 
-##Nuove problematiche, supportate dalla community
+## Nuove problematiche, supportate dalla community
 
 Abbiamo chiesto alla community di fornirci intuizioni a lungo termine su due nuove categorie di debolezze. Dopo più di 500 peer submissions, e eliminando problematiche già supportate dai dati (come Sensitive Data Exposure e XXE), le due nuove problematiche sono:
 
