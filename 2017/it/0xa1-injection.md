@@ -10,38 +10,38 @@
 
 Un'applicazione è vulnerabile se:
 
-* User-supplied data is not validated, filtered, or sanitized by the application.
-* Dynamic queries or non-parameterized calls without context-aware escaping are used directly in the interpreter.  
-* Hostile data is used within object-relational mapping (ORM) search parameters to extract additional, sensitive records.
-* Hostile data is directly used or concatenated, such that the SQL or command contains both structure and hostile data in dynamic queries, commands, or stored procedures.
-* Some of the more common injections are SQL, NoSQL, OS command, Object Relational Mapping (ORM), LDAP, and Expression Language (EL) or Object Graph Navigation Library (OGNL) injection. The concept is identical among all interpreters. Source code review is the best method of detecting if applications are vulnerable to injections, closely followed by thorough automated testing of all parameters, headers, URL, cookies, JSON, SOAP, and XML data inputs. Organizations can include static source ([SAST](https://www.owasp.org/index.php/Source_Code_Analysis_Tools)) and dynamic application test ([DAST](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)) tools into the CI/CD pipeline to identify newly introduced injection flaws prior to production deployment.
+* I dati forniti dagli utenti non vengono validati, filtrati, o ripuliti dall'applicazione.
+* L'interprete utilizza direttamente query dinamiche o chiamate non parametrizzate senza un "escaping" contestuale.  
+* Dati non fidati vengono utilizzati all'interno dei parametri di ricerca di un object-relational mapping (ORM) per ottenere ulteriori dati sensibili.
+* Dati non fidati vengono utilizzati direttamente, o concatenati, in modo tale che la query SQL o il comando contenga sia la struttura che i dati non fidati in query dinamiche, comandi o stored procedures.
+* Alcune delle forme di injection più comuni sono SQL, NoSQL, comandi di OS, Object Relational Mapping (ORM), LDAP, Expression Language (EL) o Object Graph Navigation Library (OGNL). Il concetto è lo stesso tra tutti gli interpreti. Il miglior modo per identificare se le applicazioni sono vulnerabili ad una forma di injection è la revisione del codice, seguita da uno scrupoloso testing automatizzato per tutti gli input quali parametri, header, URL, cookies, JSON, SOAP e XML. Le organizzazioni possono includere nelle loro pipeline di CI/CD strumenti di analisi statica ([SAST](https://www.owasp.org/index.php/Source_Code_Analysis_Tools)) o dinamica ([DAST](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)) del codice, per rilevare prontamente eventuali falle di injection prima della messa in produzione.
 
-## How To Prevent
+## Come prevenire?
 
-Preventing injection requires keeping data separate from commands and queries.
+Per prevenire le falle di injection è necessario separare i dati non fidati dai comandi e dalle query.
 
-* The preferred option is to use a safe API, which avoids the use of the interpreter entirely or provides a parameterized interface, or migrate to use Object Relational Mapping Tools (ORMs). **Note**: Even when parameterized, stored procedures can still introduce SQL injection if PL/SQL or T-SQL concatenates queries and data, or executes hostile data with EXECUTE IMMEDIATE or exec().
-* Use positive or "whitelist" server-side input validation. This is not a complete defense as many applications require special characters, such as text areas or APIs for mobile applications.
-* For any residual dynamic queries, escape special characters using the specific escape syntax for that interpreter. **Note**: SQL structure such as table names, column names, and so on cannot be escaped, and thus user-supplied structure names are dangerous. This is a common issue in report-writing software.
-* Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.
+* La soluzione migliore è utilizzare delle API sicure, che evitano l'utilizzo di un interprete o forniscono un'interfaccia parametrizzata, o utilizzare direttamente un Object Relational Mapping (ORM). **Nota bene**: Le stored procedures, anche se parametrizzate, possono comunque introdurre SQL injection se le istruzioni PL/SQL o T-SQL concatenano query e dati, o eseguono dati non fidati con EXECUTE IMMEDIATE o exec(). 
+* Usare una validazione server side di tipo "allowlist". Questa non è comunque una difesa completa in quando molte applicazioni richiedono caratteri speciali, come le aree di testo o le API per le applicazioni mobili.
+* Per eventuali query dinamiche rimaste, svolgere un "escaping" dei caratteri speciali utilizzando una sintassi specifica per l'interprete in questione. **Nota bene**: Non si può svolgere un "escaping" per i nomi delle tabelle e delle colonne in SQL, quindi è pericoloso ricevere dati non fidati per questi. Questo è un problema comune per i software che producono reportistica.
+* Usare LIMIT o altri controlli SQL all'interno delle query per evitare l'estrazione massiva di dati in caso di SQL injection.
 
-## Example Attack Scenarios
+## Esempi di Scenari di Attacco
 
-**Scenario #1**: An application uses untrusted data in the construction of the following vulnerable SQL call:
+**Scenario #1**: Un'applicazione usa dati non fidati per la costruzione della seguente chiamata SQL vulnerabile: 
 
 `String query = "SELECT * FROM accounts WHERE custID='" + request.getParameter("id") + "'";`
 
-**Scenario #2**: Similarly, an application’s blind trust in frameworks may result in queries that are still vulnerable, (e.g. Hibernate Query Language (HQL)):
+**Scenario #2**: Analogamente, un'applicazione si fida ciecamente dei propri framework con il risultato che si possono comunque creare query vulnerabili (es. Hibernate Query Language (HQL)):
 
 `Query HQLQuery = session.createQuery("FROM accounts WHERE custID='" + request.getParameter("id") + "'");`
 
-In both cases, the attacker modifies the ‘id’ parameter value in their browser to send:  ' or '1'='1. For example:
+In entrambi i casi, l'attaccante modifica il parametro ‘id’ nel proprio browser per inviare il valore:  ' or '1'='1. Ad esempio:
 
 `http://example.com/app/accountView?id=' or '1'='1`
 
-This changes the meaning of both queries to return all the records from the accounts table. More dangerous attacks could modify or delete data, or even invoke stored procedures.
+Questo cambia il significato di entrambe le query per ottenere tutti i record della tabella "account". Attacchi più pericolosi possono portare alla modifica dei dati o all'invocazione di stored procedure.
 
-## References
+## Riferimenti
 
 ### OWASP
 
