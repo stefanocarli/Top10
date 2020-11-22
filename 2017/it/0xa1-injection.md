@@ -12,7 +12,7 @@ Un'applicazione è vulnerabile se:
 
 * I dati forniti dagli utenti non vengono validati, filtrati, o ripuliti dall'applicazione.
 * L'interprete utilizza direttamente query dinamiche o chiamate non parametrizzate senza un "escaping" contestuale.  
-* Dati non fidati vengono utilizzati all'interno dei parametri di ricerca di un object-relational mapping (ORM) per ottenere ulteriori dati sensibili.
+* Dati non fidati vengono utilizzati all'interno dei parametri di ricerca di un object-relational mapping (ORM) per ottenere ulteriori dati confidenziali.
 * Dati non fidati vengono utilizzati direttamente, o concatenati, in modo tale che la query SQL o il comando contenga sia la struttura che i dati non fidati in query dinamiche, comandi o stored procedures.
 * Alcune delle forme di injection più comuni sono SQL, NoSQL, comandi di OS, Object Relational Mapping (ORM), LDAP, Expression Language (EL) o Object Graph Navigation Library (OGNL). Il concetto è lo stesso tra tutti gli interpreti. Il miglior modo per identificare se le applicazioni sono vulnerabili ad una forma di injection è la revisione del codice, seguita da uno scrupoloso testing automatizzato per tutti gli input quali parametri, header, URL, cookies, JSON, SOAP e XML. Le organizzazioni possono includere nelle loro pipeline di CI/CD strumenti di analisi statica ([SAST](https://www.owasp.org/index.php/Source_Code_Analysis_Tools)) o dinamica ([DAST](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)) del codice, per rilevare prontamente eventuali falle di injection prima della messa in produzione.
 
