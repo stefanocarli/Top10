@@ -10,7 +10,7 @@
 
 Un'applicazione è vulnerabile se:
 
-* I dati forniti dagli utenti non vengono validati, filtrati, o ripuliti dall'applicazione.
+* I dati forniti dagli utenti non vengono validati, filtrati, o sanificati dall'applicazione.
 * L'interprete utilizza direttamente query dinamiche o chiamate non parametrizzate senza un "escaping" contestuale.  
 * Dati non fidati vengono utilizzati all'interno dei parametri di ricerca di un object-relational mapping (ORM) per ottenere ulteriori dati confidenziali.
 * Dati non fidati vengono utilizzati direttamente, o concatenati, in modo tale che la query SQL o il comando contenga sia la struttura che i dati non fidati in query dinamiche, comandi o stored procedures.
