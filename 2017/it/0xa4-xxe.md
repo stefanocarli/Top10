@@ -3,11 +3,11 @@
 | Threat agents/Attack vectors | Problematiche di sicurezza           | Impatti              |
 | -- | -- | -- |
 | Access Lvl : Sfruttabilità 2 | Diffusione 2 : Individuazione 3 | Tecnici 3 : Business |
-| Gli attaccanti possono sfruttare processori XML vulnerabili se possono caricare documenti XML con contenuto malevolo, sfruttando codice vulnerabile, integrazioni o dipendenze. | Di default, molti processori XML vecchi permettono di speficare entità esterne, un URI che viene dereferenziato e valutato durante l'eleborazione del XML. Strumenti di [SAST](https://www.owasp.org/index.php/Source_Code_Analysis_Tools) possono rilevare queste problematiche ispezinando le dipendenze e la configurazione. Strumenti di [DAST](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) richiedono un ulteriore sforzo manuale per rilevare e sfruttare questa problematica. I tester devono essere formati per il test di XXE in quanto nel 2017 non viene fatto a dovere. | Queste problematiche possono essere utilizzate per ottenere dati, eseguire delle chiamate dal server, scansionare sistemi interni, svolgere attacchi di denial-of-service, così come tanti altri. |
+| Gli attaccanti possono sfruttare processori XML vulnerabili se possono caricare documenti XML con contenuto malevolo, sfruttando codice vulnerabile, integrazioni o dipendenze. | Di default, molti processori XML vecchi permettono di specificare entità esterne, un URI che viene dereferenziato e valutato durante l'eleborazione del XML. Strumenti di [SAST](https://www.owasp.org/index.php/Source_Code_Analysis_Tools) possono rilevare queste problematiche ispezionando le dipendenze e la configurazione. Strumenti di [DAST](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) richiedono un ulteriore sforzo manuale per rilevare e sfruttare questa problematica. I tester devono essere formati per il test di XXE in quanto nel 2017 non viene ancora fatto a dovere. | Queste problematiche possono essere utilizzate per ottenere dati, eseguire delle chiamate dal server, scansionare sistemi interni, svolgere attacchi di denial-of-service, così come tanti altri. |
 
 ## Sono vulnerabile?
 
-Le applicazioni e in particolare i servizi web XML-based o integrazioni a valle potrebbero essere vulnerabili se:
+Le applicazioni, e in particolare i servizi web XML-based o integrazioni a valle potrebbero essere vulnerabili se:
 
 * L'applicazione accetta XML o il caricamento di documenti XML, specialmente da fonti non fidate, o inserisce dati non validati all'interno di documenti XML, che vengono elaborati da un parser XML.
 * I parser XML dell'applicazione o i servizi web SOAP permettono la definizione di [document type definitions (DTDs)](https://en.wikipedia.org/wiki/Document_type_definition). Dato che la disattivazione dell'elaborazione dei DTD varia in base al parser, è bene consultare delle guide come la [OWASP Cheat Sheet 'XXE Prevention'](https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Prevention_Cheat_Sheet). 
@@ -47,7 +47,7 @@ Sono numerosi gli esempi di problematiche XXE, inclusi gli attacchi a dispositiv
    <!ENTITY xxe SYSTEM "https://192.168.1.1/private" >]>
 ```
 
-**Scenario #3**: L'attaccante prova un attacco di denial-of-service includento un file potenzialmente infinito:
+**Scenario #3**: L'attaccante prova un attacco di denial-of-service includendo un file potenzialmente infinito:
 
 ```
    <!ENTITY xxe SYSTEM "file:///dev/random" >]>
