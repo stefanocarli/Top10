@@ -3,11 +3,11 @@
 | Threat agents/Attack vectors | Problematica di sicurezza       | Impatti               |
 | -- | -- | -- |
 | Access Lvl : Sfruttabilità 3 | Diffusione 2 : Individuazione 2 | Tecnici 3 : Business |
-| Gli attaccanti hanno a disposizione centinaia di milioni di combinazioni di username e password e account amministrativi di default per svolgere attacchi di credentials stuffing, strumenti per attacchi brute force e a dizionario. Gli attacchi sulla gestione delle sessioni sono ben noti, in particolare sulla perduranza delle stesse.  | La prevalenza di broken authentication è diffusa a causa della progettazione e implementazione della maggior parte dei meccanismi di controllo degli accessi e identità. Il meccanismo di gestione delle sessioni è fondamentale per i controlli di questo tipo, ed è presente in tutte le applicazioni stateful. Gli attaccanti possono identificare vulnerabilità di questo tipo con approcci manuali e sfruttarle con l'ausilio di strumenti automatizzati con liste di password e attacchi a dizionario. | Gli attaccanti per compromettere il sistema devono semplicemente riuscire ad accedere a qualche account, oppure a quello amministrativo. In base al dominio dell'applicazione, questo può portare al riciclaggio di denaro, frodi e furto di identità, o ottenere informazioni altamente riservate. |
+| Gli attaccanti hanno a disposizione centinaia di milioni di combinazioni di username e password e account amministrativi di default per svolgere attacchi di credential stuffing, strumenti per attacchi brute force e a dizionario. Gli attacchi sulla gestione delle sessioni sono ben noti, in particolare sulla perduranza delle stesse.  | La prevalenza di broken authentication è diffusa a causa della progettazione e implementazione della maggior parte dei meccanismi di controllo degli accessi e identità. Il meccanismo di gestione delle sessioni è fondamentale per i controlli di questo tipo, ed è presente in tutte le applicazioni stateful. Gli attaccanti possono identificare vulnerabilità di questo tipo con approcci manuali e sfruttarle con l'ausilio di strumenti automatizzati con liste di password e attacchi a dizionario. | Gli attaccanti per compromettere il sistema devono semplicemente riuscire ad accedere a qualche account, oppure a quello amministrativo. In base al dominio dell'applicazione, questo può portare al riciclaggio di denaro, frodi e furto di identità, o ottenere informazioni altamente riservate. |
 
 ## Sono vulnerabile?
 
-La conferma dell'identità degli utenti, l'autenticazione e la gestione della sessione sono fondamentali per la protezione contro attacchi legati all'autenticazione.
+La conferma dell'identità degli utenti, l'autenticazione e la gestione delle sessioni sono fondamentali per la protezione contro attacchi legati all'autenticazione.
 
 Ci potrebbero essere debolezze sui meccanismi di autenticazione se l'applicazione:
 
@@ -25,19 +25,19 @@ Ci potrebbero essere debolezze sui meccanismi di autenticazione se l'applicazion
 
 * Dove possibile, implementare l'autenticazione multi-fattore per evitare attacchi automatizzati di credential stuffing, brute force, e riutilizzo di credenziali rubate.
 * Non pubblicare applicazioni con credenziali di default, in particolare per gli utenti amministrativi.
-* Implementare controlli di password deboli, come i test con la lista delle [top 10000 peggiori passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords) per quelle nuove o cambiate recentemente.
+* Implementare controlli per password deboli, come i test con la lista delle [top 10000 password peggiori](https://github.com/danielmiessler/SecLists/tree/master/Passwords) per quelle nuove o cambiate recentemente.
 * Rendere conformi la lunghezza delle password, la complessità e le politiche di rotazione con le [linee guida NIST 800-63 nella sezione 5.1.1 per "Memorized Secrets"](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret) o altre politiche moderne equivalenti.
 * Assicurarsi che la registrazione, il recupero delle credenziali e le API siano robuste contro gli attacchi di enumerazione degli account utilizzando un messaggio generico per tutte le casistiche.
-* Limitare o limitare temporalmente i tentativi di login falliti. Scrivere sul log tutti gli errori e avvisare gli amministratori quando vengono rilevati attacchi di credential stuffing, brute force ecc.
+* Limitare temporalmente e non, i tentativi di login falliti. Scrivere sul log tutti gli errori e avvisare gli amministratori quando vengono rilevati attacchi di credential stuffing, brute force ecc.
 * Utilizzare un session manager lato server che sia sicuro, e che dopo il login generi un nuovo ID di sessione con alta entropia. Gli ID di sessione non dovrebbero essere nell'URL ma essere memorizzati in modo sicuro e invalidati dopo il logout, inattività o timeout.
 
 ## Esempi di Scenari di Attacco
 
 **Scenario #1**: [Credential stuffing](https://www.owasp.org/index.php/Credential_stuffing), l'uso di [liste di password conosciute](https://github.com/danielmiessler/SecLists), è un attacco comune. Se un'applicazione non implementa protezioni automatiche contro le minacce o contro il credential stuffing, l'applicazione potrebbe essere utilizzata per stabilire se le credenziali inserite sono valide.
 
-**Scenario #2**: La maggior parte degli attacchi sui meccanismi di autenticazione avvengono perchè vengono utilizzate solo le password come fattore di autenticazione. Le best practice, i requisiti di complessità e rotazione delle password sono viste dagli utenti come un incoraggiamento all'utilizzo di password deboli. Per le organizzazioni è consigliato non seguire le direttive NIST 800-63 e utilizzare l'autenticazione multi-fattore.
+**Scenario #2**: La maggior parte degli attacchi sui meccanismi di autenticazione avvengono perchè il solo fattore di autenticazione utilizzato è la password. Una volta considerate le best practice, i requisiti di complessità e la rotazione delle password sono visti dagli utenti come un incoraggiamento all'utilizzo e al riutilizzo di password deboli. Per le organizzazioni è consigliato interrompere queste pratiche secondo il NIST 800-63 e di utilizzare l'autenticazione multi-fattore.
 
-**Scenario #3**: I timeout delle sessioni delle applicazioni sono vengono impostati correttamente. Un utente utilizza un computer pubblico per accedere a un'applicazoine. Anzichè selezionare "logout" l'utente si limita a chiudere la finestra del browser e va via. Un attaccante un'ora dopo utilizza lo stesso browser, e l'utente è ancora autenticato.
+**Scenario #3**: I timeout delle sessioni delle applicazioni sono vengono impostati correttamente. Un utente utilizza un computer pubblico per accedere a un'applicazione. Anzichè selezionare "logout" l'utente si limita a chiudere la finestra del browser e va via. Un attaccante un'ora dopo utilizza lo stesso browser, e l'utente è ancora autenticato.
 
 ## Riferimenti
 
